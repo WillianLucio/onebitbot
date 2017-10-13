@@ -5,13 +5,13 @@ module FaqModule
       @company = Company.last
       @question = params["question-original"]
       @answer = params["answer-original"]
-      @hashtags = params["hashtags-original"]
+      @hashtags = params["hashtags"]
     end
 
     def call
-      if @hashtags == nil || @hashtags == ""
-        return 'Hashtag Obrigatória'
-      end
+        if @hashtags == nil || @hashtags == ""
+          return 'Hashtag Obrigatória'
+        end
 
       begin
         Faq.transaction do
